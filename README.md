@@ -3,7 +3,7 @@ to control Firefox:
 
     Any browser/client <--> fireprox <--> MozRepl <--> Firefox
 
-I threw this together because I needed a way to programatically read the current
+I threw this together because I needed an easy way to programatically read the current
 url from Firefox into my javascript web application [WhoDoTheyServe.com][wdts],
 but was unable to workaround browser security restrictions or get
 [Firefox WebDriver][WebDriver] to work reliably.

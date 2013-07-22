@@ -27,11 +27,11 @@ Point any browser/client to `http://fireprox:8080/exec/COMMAND` where:
 
 ## Examples
 
-To get the firefox current url browse to:
+To get the firefox current url, browse to:
 
     http://fireprox:8080/exec/content.location.href
 
-To show 'foo' in an alert box browse to:
+To show 'foo' in an alert box, browse to:
 
     http://fireprox:8080/exec/alert('foo')
 

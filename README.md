@@ -19,11 +19,11 @@ You should see the MozRepl welcome message.
 
 ## Usage
 
-Point any browser/client to @http://fireprox:8080/exec/COMMAND@ where:
+Point any browser/client to `http://fireprox:8080/exec/COMMAND` where:
 
-  @fireprox@ is the nodejs server running fireprox
+  `fireprox:8080` is the nodejs server running fireprox
 
-  @COMMAND@ is any MozRepl command
+  `COMMAND` is any MozRepl command
 
 ## Examples
 
@@ -37,13 +37,13 @@ To show 'foo' in an alert box browse to:
 
 ## Configuration
 
-Use the following env-vars to configure fireprox:
+Use the following environment variables to configure fireprox:
 
-MOZREPL_HOST: The MozRepl host name or ip. Default is localhost.
+`MOZREPL_HOST`: The MozRepl host name or ip. Default is localhost.
 
-MOZREPL_PORT: The MozRepl host port. Default is 4242.
+`MOZREPL_PORT`: The MozRepl host port. Default is 4242.
 
-PORT: The fireprox host port. Default is 8080.
+`PORT`: The fireprox host port. Default is 8080.
 
 ## Credits
 

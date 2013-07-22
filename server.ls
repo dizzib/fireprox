@@ -25,7 +25,7 @@ function start then
       client.removeListener \data, responder
       res.send it.toString!replace(REPL-PROMPT, '').trim!
 
-  <- Http.createServer(server).listen (port = get-env-var \PORT, 8080)
+  <- Http.createServer(server).listen (port = get-env-var \FIREPROX_PORT, 8080)
   log "Fireprox http server listening on port #{port}"
 
 # http://backbonetutorials.com/cross-domain-sessions/

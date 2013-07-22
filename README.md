@@ -10,9 +10,16 @@ but was unable to workaround browser security restrictions or get
 
 ## To Install and Run
 
-Clone the repo, compile the [LiveScript] files to javascript/json, then:
+    npm install -g fireprox
 
-    npm install
+To configure (optional):
+
+    export MOZREPL_HOST={your MozRepl host name or ip, default=localhost}
+    export MOZREPL_PORT={your MozRepl port, default=4242}
+    export FIREPROX_PORT={Fireprox port, default=8080}
+
+To start fireprox:
+
     npm start
 
 You should see the MozRepl welcome message.

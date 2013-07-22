@@ -10,7 +10,7 @@ but was unable to workaround browser security restrictions or get
 
 ## To Install and Run
 
-Compile the [LiveScript] files to javascript/json. Then:
+Clone the repo, compile the [LiveScript] files to javascript/json, then:
 
     npm install
     npm start

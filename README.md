@@ -10,18 +10,19 @@ but was unable to workaround browser security restrictions or get
 
 ## To Install and Run
 
-`cd` to where you want it installed, then:
+To install globally:
 
-    npm install fireprox
+    npm install -g fireprox
 
 To configure (optional):
 
-    export MOZREPL_HOST={your MozRepl host name or ip, default=localhost}
-    export MOZREPL_PORT={your MozRepl port, default=4242}
-    export FIREPROX_PORT={Fireprox port, default=8080}
+    export MOZREPL_HOST=<your MozRepl host name or ip, default=localhost>
+    export MOZREPL_PORT=<your MozRepl port, default=4242>
+    export FIREPROX_PORT=<Fireprox port, default=8080>
 
 To start:
 
+    cd /usr/lib    (or wherever your global node_modules lives)
     npm start fireprox
 
 If all goes well you should see the MozRepl welcome message.
@@ -43,6 +44,14 @@ To get the firefox current url, browse to:
 To show 'foo' in an alert box, browse to:
 
     http://fireprox:8080/exec/alert('foo')
+
+(note you'll need to manually close this alert before fireprox returns).
+
+To configure for hosting MozRepl at `sweep:5050` and fireprox on port `8181`:
+
+    export MOZREPL_HOST=sweep
+    export MOZREPL_PORT=5050
+    export FIREPROX_PORT=8181
 
 ## Credits
 

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+lsc -o ./dist -cw ./package.json.ls &
+lsc -o ./dist/task -cw ./task/*.ls &
+
+cd dist
+npm prune
+npm install
+
+while read
+do
+  :
+done

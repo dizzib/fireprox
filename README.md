@@ -41,11 +41,10 @@ To show `foo` in an alert box browse to `http://fireprox:8080/exec/alert('foo')`
 
     npm install -g livescript   # ensure livescript is installed globally
     ./task/bootstrap            # compile the scripts and install dependencies
-
     node dist/task/repl         # run the build scripts
     b.fc                        # compile everything
 
-Then run it from another terminal:
+Then to run it from another terminal:
 
     node dist/site/server
 

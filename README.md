@@ -44,7 +44,7 @@ To show `foo` in an alert box browse to `http://fireprox:8080/exec/alert('foo')`
     node dist/task/repl         # run the build scripts
     b.fc                        # compile everything
 
-Then to run it from another terminal:
+To run it, open another terminal then:
 
     node dist/site/server
 

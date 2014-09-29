@@ -6,7 +6,7 @@ module.exports =
     Assert.equal pwd!, Dir.DIST
     # package.json must reside in the /site npm package
     cp \-f, './package.json', Dir.dist.SITE
-    mv './README.html', Dir.dist.SITE if test \-e './README.html'
+    mv \-f, './README.html', Dir.dist.SITE if test \-e './README.html'
 
   publish: ->
     false

@@ -8,7 +8,7 @@
       Assert.equal(pwd(), Dir.DIST);
       cp('-f', './package.json', Dir.dist.SITE);
       if (test('-e', './README.html')) {
-        return mv('./README.html', Dir.dist.SITE);
+        return mv('-f', './README.html', Dir.dist.SITE);
       }
     },
     publish: function(){

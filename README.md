@@ -40,10 +40,10 @@ To show `foo` in an alert box browse to `http://fireprox:8080/exec/alert('foo')`
     git clone git@github.com:dizzib/fireprox.git
 
     npm install -g livescript   # ensure livescript is installed globally
-    ./task/bootstrap    # compile the scripts and install dependencies
+    ./task/bootstrap            # compile the scripts and install dependencies
 
-    node dist/task/repl # run the build scripts
-    b.fc                # compile everything
+    node dist/task/repl         # run the build scripts
+    b.fc                        # compile everything
 
 Then run it from another terminal:
 

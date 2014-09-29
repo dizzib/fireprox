@@ -1,13 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-lsc -o ./dist -cw ./package.json.ls &
-lsc -o ./dist/task -cw ./task/*.ls &
+DIST="dist"
 
-cd dist
+lsc -o $DIST -c ./package.json.ls
+lsc -o $DIST/task -c ./task/*.ls
+
+cd $DIST
 npm prune
 npm install
-
-while read
-do
-  :
-done

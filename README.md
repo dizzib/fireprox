@@ -1,6 +1,6 @@
-A simple proxy for [MozRepl] over HTTP-GET using [express]/[nodejs] to control Firefox:
+A simple proxy for [MozRepl] over HTTP-GET using [express]/[node.js] to control Firefox:
 
-    browser/client <-- HTTP-GET --> fireprox <----> MozRepl/Firefox
+    browser/client <--HTTP-GET--> fireprox <----> MozRepl/Firefox
 
 I threw this together because I needed an easy way to programatically read the current
 url from Firefox into my javascript web application [WhoDoTheyServe.com][wdts]
@@ -39,7 +39,7 @@ To show `foo` in an alert box browse to `http://fireprox:8080/exec/alert('foo')`
 
     git clone git@github.com:dizzib/fireprox.git
 
-    npm -g livescript   # ensure livescript is installed globally
+    npm install -g livescript   # ensure livescript is installed globally
     ./task/bootstrap    # compile the scripts and install dependencies
 
     node dist/task/repl # run the build scripts
@@ -61,6 +61,6 @@ MIT
 [express]: https://github.com/visionmedia/express
 [LiveScript]: https://github.com/gkz/LiveScript
 [MozRepl]: https://github.com/bard/mozrepl/wiki
-[nodejs]: http://nodejs.org
+[node.js]: http://nodejs.org
 [wdts]: http://WhoDoTheyServe.com
 [WebDriver]: http://code.google.com/p/selenium/wiki/FirefoxDriver

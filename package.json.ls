@@ -1,7 +1,7 @@
 name       : \fireprox
-description: "Control firefox via HTTP GET"
-version    : \1.0.0
-author     : 'Andy Cook'
+description: "A simple proxy for MozRepl over HTTP GET using express/nodejs"
+version    : \0.2.1
+author     : \dizzib
 license:   : \MIT
 keywords   : <[ control firefox get http marionette node nodejs proxy ]>
 repository :

@@ -1,9 +1,9 @@
 name       : \fireprox
 description: "A simple proxy for MozRepl over HTTP GET using express/nodejs"
-version    : \0.2.1
+version    : \0.3.0
 author     : \dizzib
 license:   : \MIT
-keywords   : <[ control firefox get http marionette node nodejs proxy ]>
+keywords   : <[ control firefox get http mozrepl node nodejs proxy ]>
 repository :
   type: \git
   url : \https://github.com/dizzib/fireprox
@@ -25,3 +25,4 @@ devDependencies:
   marked    : \~0.3.1
   shelljs   : \~0.2.6
   'wait.for': \~0.6.3
+  yargs     : \~1.3.1

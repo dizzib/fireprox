@@ -38,9 +38,9 @@ module.exports = me = (new Emitter!) with
 
   refresh-modules: ->
     Assert.equal pwd!, Dir.DIST
-    W4 exec, 'npm -v'
-    W4 exec, 'npm prune'
-    W4 exec, 'npm install'
+    W4 exec, 'npm -v', silent:false
+    W4 exec, 'npm prune', silent:false
+    W4 exec, 'npm install', silent:false
 
   start: ->
     G.say 'build started'
@@ -101,7 +101,7 @@ function prune-empty-dirs
 function start-watching tid
   log "start watching #tid"
   ixt = (t = tasks[tid]).ixt
-  dirs = "#{Dirname.SITE},#{Dirname.TASK}"
+  dirs = "#{Dirname.SITE},#{Dirname.TASK},#{Dirname.TEST}"
   # TODO: remove t.isMatch when gaze fixes https://github.com/shama/gaze/issues/104
   t.isMatch = (ipath) -> Globule.isMatch t.patterns, (ipath.replace "#{Dir.ROOT}/", '')
   t.gaze = Gaze t.patterns = [ "*.#ixt" "{#dirs}/**/*.#ixt" ], ->

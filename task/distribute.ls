@@ -1,7 +1,7 @@
 Assert = require \assert
+Args   = require \commander
 Shell  = require \shelljs/global
 W4     = require \wait.for .for
-Argv   = require \yargs .argv
 Dir    = require \./constants .dir
 
 module.exports =
@@ -13,8 +13,8 @@ module.exports =
   publish-local: ->
     pushd Dir.dist.SITE
     try
-      port = argv.reggie-server-port
-      W4 exec, "reggie -u http://localhost:#port publish"
+      port = Args.reggie-server-port
+      W4 exec, "reggie -u http://localhost:#port publish", silent:false
     finally
       popd!
 

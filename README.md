@@ -10,9 +10,6 @@ but was unable to workaround browser security restrictions or get
 ## To Install and Run
 
     $ npm install fireprox
-
-To start:
-
     $ cd node_modules/fireprox
     $ node fireprox
 

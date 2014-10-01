@@ -1,6 +1,6 @@
 A simple proxy for [MozRepl] over HTTP-GET using [express]/[node.js] to control Firefox:
 
-    browser/client <--HTTP-GET--> fireprox <----> MozRepl/Firefox
+    browser or client <--HTTP-GET--> fireprox <----> MozRepl + Firefox
 
 I threw this together because I needed an easy way to programatically read the current
 url from Firefox into my javascript web application [WhoDoTheyServe.com][wdts]

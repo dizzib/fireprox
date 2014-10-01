@@ -21,6 +21,6 @@ module.exports =
   publish-public: ->
     pushd Dir.dist.SITE
     try
-      log 'TODO!'
+      W4 exec, "npm publish", silent:false
     finally
       popd!

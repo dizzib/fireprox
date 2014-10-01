@@ -43,7 +43,9 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
       rl.prompt!
 
 Build.start!
-Build.on \built, Dist.prepare
+Build.on \built, ->
+  Dist.prepare!
+  Test.run!
 setTimeout show-help, 1000ms
 
 # helpers

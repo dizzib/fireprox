@@ -16,6 +16,7 @@ dependencies:
   express      : \3.1.0
   commander    : \2.3.0
   'http-status': \0.1.8
+  lodash       : \2.4.1
 devDependencies:
   chalk     : \~0.4.0
   cron      : \~1.0.3
@@ -23,7 +24,6 @@ devDependencies:
   globule   : \~0.2.0 # TODO: remove when gaze fixes issue 104
   gntp      : \~0.1.1
   LiveScript: \~1.2.0
-  lodash    : \~2.4.1
   marked    : \~0.3.1
   request   : \~2.44.0
   shelljs   : \~0.2.6

@@ -30,7 +30,7 @@ server = Http.createServer!
   # So let's minimise the timeout until we figure what's happening
   ..timeout = 1000ms
 
-req = R.defaults timeout:2000ms
+req = R.defaults timeout:5000ms
 
 T 'kill existing firefoxes', (t) ->
   # NOTE! Killing firefox via SIGTERM makes it grumble on next launch.
@@ -63,7 +63,6 @@ T 'navigate firefox to BOOP', (t) ->
   err, res, body <- req "#fpx-url/exec/content.location.href='#{escape boop-url}'"
   t.equal res?statusCode, HttpSt.OK
   assert body, boop-url
-  <- _.delay _, 250ms # allow mozrepl to settle down otherwise we get an error
   <- req "#fpx-url/exec/repl.enter(content)"
   err, res, body <- req "#fpx-url/exec/document.querySelector('html').outerHTML"
   t.equal res?statusCode, HttpSt.OK
@@ -74,7 +73,7 @@ T 'kill firefox', (t) ->
   # NOTE! Killing firefox via SIGTERM makes it grumble on next launch.
   # https://bugzilla.mozilla.org/show_bug.cgi?id=336193
   firefox?kill!
-  <- _.delay _, 1000ms # give firefox a chance to close
+  <- _.delay _, 500ms # give firefox a chance to close
   t.end!
 
 T 'fireprox should say hello after firefox is closed', check-fireprox-says-hello

@@ -32,42 +32,43 @@ var client
 net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
 
 (express = Express!).use allow-cross-domain
-  ..get '/', (req, res, next) -> # you can navigate to / to check fireprox is running
+  ..get '/', (req, res, next) -> # TIP: to check fireprox is running manually navigate to /
     log msg = 'Fireprox says hello!'
     res.send msg
+
   ..get '/exec/:command', (req, res, next) ->
     log cmd = req.params.command
-    return send! if client
-    # connect lazily
+    return send-and-reply! if client
+
     log "Fireprox connecting to MozRepl at #{net-cfg.host}:#{net-cfg.port}"
-    var send-on-prompt
-    client := Net.connect net-cfg
+    client := Net.connect net-cfg # lazy connection
       ..on \close, ->
         log 'socket.close'
         client := null
       ..on \connect, ->
         log 'Fireprox connected to MozRepl!'
-        send-on-prompt := true # ensure cmd is sent at prompt after welcome messages
-      ..on \data, ->
-        log it.toString!
-        return unless MOZREPL-PROMPT-RX.test it
-        return unless send-on-prompt
-        send-on-prompt := false
-        <- _.delay _, 250ms # allow mozrepl to settle down otherwise we get an error
-        send!
+      ..on \data, skip-welcome
       ..on \error, -> # e.g. cannot connect
         log s = it.toString!
         res.send s, HttpSt.BAD_GATEWAY
 
-    function send
-      client.on \data, responder
-      client.write cmd
+    function send-and-reply
+      <- _.delay _, 250ms # mozrepl sometimes gives 'Host context unloading!' without this (yay!)
+      client.on(\data, responder).write cmd
+      buffer = []
+      function responder # add packets to buffer til we see the prompt
+        log it.toString!
+        buffer.push it
+        return unless MOZREPL-PROMPT-RX.test it
+        client.removeListener \data, responder
+        res.send (buffer.toString!replace MOZREPL-PROMPT, '').trim!
+        buffer := []
 
-    function responder
-      # to keep it simple only the first packet is captured and returned
-      # Yes this is horrible 'cos subsequent packets may still be arriving
-      client.removeListener \data, responder
-      res.send it.toString!replace(MOZREPL-PROMPT, '').trim!
+    function skip-welcome
+      log it.toString!
+      return unless MOZREPL-PROMPT-RX.test it
+      client.removeListener \data, skip-welcome
+      send-and-reply!
 
 log "Creating fireprox listening on port #{Args.port}"
 <- Http.createServer(express).listen Args.port

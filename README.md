@@ -13,7 +13,7 @@ but was unable to workaround browser security restrictions or get
     $ cd node_modules/fireprox
     $ node fireprox
 
-Options:
+## Options
 
     $ node fireprox --help
 
@@ -29,20 +29,20 @@ Options:
 
 ## Usage
 
-To check fireprox is running navigate to `http://fireprox:8080` where `fireprox:8080` is
+Navigate to `http://server:8080` where `server` is
 the node.js server running fireprox. You should see `Fireprox says hello!`.
 
-Now navigate to `http://fireprox:8080/COMMAND` where `COMMAND` is any MozRepl command.
+Now navigate to `http://server:8080/COMMAND` where `COMMAND` is any MozRepl command.
 
 ## Examples
 
-To get the firefox current url browse to `http://fireprox:8080/content.location.href`
+To get the firefox current url browse to `http://server:8080/content.location.href`
 
-To navigate firefox to `http://bar` browse to `http://fireprox:8080/content.location.href='http:%2f%2fbar'`
+To navigate firefox to `http://bar` browse to `http://server:8080/content.location.href='http:%2f%2fbar'`
 (notice the escaped //)
 
-To show `foo` in an alert box browse to `http://fireprox:8080/alert('foo')`
-(note you'll need to manually close this alert before fireprox returns).
+To show `foo` in an alert box browse to `http://server:8080/alert('foo')`
+(you'll need to manually close this alert before fireprox returns).
 
 ## To clone, build and run locally
 

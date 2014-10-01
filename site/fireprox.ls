@@ -36,7 +36,7 @@ net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
     log msg = 'Fireprox says hello!'
     res.send msg
 
-  ..get '/exec/:command', (req, res, next) ->
+  ..get '/:command', (req, res, next) ->
     log cmd = req.params.command
     return send-and-reply! if client
 

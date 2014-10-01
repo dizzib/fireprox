@@ -60,11 +60,11 @@ T 'navigate firefox to BOOP', (t) ->
   function assert actual, expect then t.equal actual, "\"#expect\"" # mozrepl adds quotes
   function escape then it.replace /\//g, \%2f
   t.plan 4
-  err, res, body <- req "#fpx-url/exec/content.location.href='#{escape boop-url}'"
+  err, res, body <- req "#fpx-url/content.location.href='#{escape boop-url}'"
   t.equal res?statusCode, HttpSt.OK
   assert body, boop-url
-  <- req "#fpx-url/exec/repl.enter(content)"
-  err, res, body <- req "#fpx-url/exec/document.querySelector('html').outerHTML"
+  <- req "#fpx-url/repl.enter(content)"
+  err, res, body <- req "#fpx-url/document.querySelector('html').outerHTML"
   t.equal res?statusCode, HttpSt.OK
   expect = BOOP-HTML.replace '<html>', '<html><head></head>' # firefox adds head section
   assert body, expect
@@ -87,7 +87,7 @@ T 'stop BOOP', (t) ->
 
 function check-fireprox-bad-gateway t
   t.plan 1
-  err, res, body <- req "#fpx-url/exec/content.location.href"
+  err, res, body <- req "#fpx-url/content.location.href"
   log err, body
   t.equal res?statusCode, HttpSt.BAD_GATEWAY
 

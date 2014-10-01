@@ -6,9 +6,8 @@ Dir    = require \./constants .dir
 
 module.exports =
   prepare: ->
-    Assert.equal pwd!, Dir.DIST
-    cp \-f, './package.json', Dir.dist.SITE
-    mv \-f, './README.html', Dir.dist.SITE if test \-e './README.html'
+    cp \-f, "#{Dir.DIST}/package.json", Dir.dist.SITE
+    cp \-f, "#{Dir.ROOT}/readme.md", Dir.dist.SITE
 
   publish-local: ->
     pushd Dir.dist.SITE

@@ -29,7 +29,10 @@ Options:
 
 ## Usage
 
-Point your browser to `http://fireprox:8080/COMMAND` where `fireprox:8080` is the node.js server running fireprox and `COMMAND` is any MozRepl command.
+To check fireprox is running navigate to `http://fireprox:8080` where `fireprox:8080` is
+the node.js server running fireprox. You should see `Fireprox says hello!`.
+
+Now navigate to `http://fireprox:8080/COMMAND` where `COMMAND` is any MozRepl command.
 
 ## Examples
 

@@ -13,8 +13,9 @@ engines:
   node: \>=0.8.x
   npm : \>=1.0.x
 dependencies:
-  express  : \3.1.0
-  commander: \2.3.0
+  express      : \3.1.0
+  commander    : \2.3.0
+  'http-status': \0.1.8
 devDependencies:
   chalk     : \~0.4.0
   cron      : \~1.0.3

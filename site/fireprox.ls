@@ -1,14 +1,18 @@
 Args    = require \commander
 Express = require \express
 Http    = require \http
+HttpSt  = require \http-status
+_       = require \lodash
 Net     = require \net
 P-Json  = require \./package.json
 
 log = console.log
 
-const PORT = 8080
-const MOZREPL-HOST = \localhost
-const MOZREPL-PORT = 4242
+const MOZREPL-HOST      = \localhost
+const MOZREPL-PORT      = 4242
+const MOZREPL-PROMPT    = 'repl>'
+const MOZREPL-PROMPT-RX = new RegExp "#MOZREPL-PROMPT $"
+const PORT              = 8080
 
 Args
   .version P-Json.version
@@ -17,37 +21,54 @@ Args
   .option '--mozrepl-port [port]', "mozrepl port (default:#MOZREPL-PORT)", MOZREPL-PORT
   .parse process.argv
 
-(express = Express!).use allow-cross-domain
-net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
-log "Fireprox connecting to MozRepl at #{net-cfg.host}:#{net-cfg.port}"
-
-client = Net.connect net-cfg, start
-  ..on \data, -> log it.toString!
-
-function start
-  log 'Fireprox connected to MozRepl!'
-  express
-    ..get '/', (req, res, next) ->
-      log msg = 'Fireprox says hello!'
-      res.send msg
-    ..get '/exec/:command', (req, res, next) ->
-      log cmd = req.params.command
-      client.on(\data, responder).write cmd
-
-      function responder
-        const REPL-PROMPT = 'repl>'
-        # to keep it simple only the first packet is captured and returned
-        client.removeListener \data, responder
-        res.send it.toString!replace(REPL-PROMPT, '').trim!
-
-  log "Creating fireprox listening on port #{Args.port}"
-  <- Http.createServer(express).listen Args.port
-  log "Fireprox listening on port #{Args.port}"
-
-# http://backbonetutorials.com/cross-domain-sessions/
-function allow-cross-domain req, res, next
+function allow-cross-domain req, res, next # http://backbonetutorials.com/cross-domain-sessions/
   res.set \Access-Control-Allow-Credentials, true
   res.set \Access-Control-Allow-Headers    , 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   res.set \Access-Control-Allow-Methods    , 'GET,POST,PUT,DELETE,OPTIONS'
   res.set \Access-Control-Allow-Origin     , req.headers.origin
   next!
+
+var client
+net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
+
+(express = Express!).use allow-cross-domain
+  ..get '/', (req, res, next) -> # you can navigate to / to check fireprox is running
+    log msg = 'Fireprox says hello!'
+    res.send msg
+  ..get '/exec/:command', (req, res, next) ->
+    log cmd = req.params.command
+    return send! if client
+    # connect lazily
+    log "Fireprox connecting to MozRepl at #{net-cfg.host}:#{net-cfg.port}"
+    var send-on-prompt
+    client := Net.connect net-cfg
+      ..on \close, ->
+        log 'socket.close'
+        client := null
+      ..on \connect, ->
+        log 'Fireprox connected to MozRepl!'
+        send-on-prompt := true # ensure cmd is sent at prompt after welcome messages
+      ..on \data, ->
+        log it.toString!
+        return unless MOZREPL-PROMPT-RX.test it
+        return unless send-on-prompt
+        send-on-prompt := false
+        <- _.delay _, 250ms # allow mozrepl to settle down otherwise we get an error
+        send!
+      ..on \error, -> # e.g. cannot connect
+        log s = it.toString!
+        res.send s, HttpSt.BAD_GATEWAY
+
+    function send
+      client.on \data, responder
+      client.write cmd
+
+    function responder
+      # to keep it simple only the first packet is captured and returned
+      # Yes this is horrible 'cos subsequent packets may still be arriving
+      client.removeListener \data, responder
+      res.send it.toString!replace(MOZREPL-PROMPT, '').trim!
+
+log "Creating fireprox listening on port #{Args.port}"
+<- Http.createServer(express).listen Args.port
+log "Fireprox listening on port #{Args.port}"

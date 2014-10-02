@@ -1,3 +1,5 @@
+## fireprox
+
 A simple proxy for [MozRepl] over HTTP-GET using [express]/[node.js] to control Firefox:
 
     browser or client <--HTTP-GET--> fireprox <----> MozRepl + Firefox
@@ -7,7 +9,7 @@ url from a remote Firefox into [my javascript web application][wdts]
 but was unable to workaround browser security restrictions or get
 [Firefox WebDriver][WebDriver] to work reliably.
 
-## To Install and Run
+## Install and run
 
     $ npm install fireprox
     $ cd node_modules/fireprox
@@ -16,7 +18,6 @@ but was unable to workaround browser security restrictions or get
 ## Options
 
     $ node fireprox --help
-
     Usage: fireprox [options]
 
     Options:
@@ -44,7 +45,7 @@ To navigate firefox to `http://bar` browse to `http://server:8080/content.locati
 To show `foo` in an alert box browse to `http://server:8080/alert('foo')`
 (you'll need to manually close this alert before fireprox returns).
 
-## To clone, build and run locally
+## Build and run locally
 
     $ git clone git@github.com:dizzib/fireprox.git
 

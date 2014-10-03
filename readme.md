@@ -54,9 +54,7 @@ To show `foo` in an alert box browse to `http://server:8080/alert('foo')`
     $ node dist/task/repl         # launch the task runner
     fireprox > b.fc               # compile everything
 
-To run your newly built fireprox:
-
-    $ node dist/site/server
+    $ node dist/site/server       # run it!
 
 ## credits
 

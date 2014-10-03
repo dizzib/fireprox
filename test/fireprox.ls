@@ -63,8 +63,7 @@ T 'navigate firefox to BOOP', (t) ->
   err, res, body <- req "#fpx-url/content.location.href='#{escape boop-url}'"
   t.equal res?statusCode, HttpSt.OK
   assert body, boop-url
-  <- req "#fpx-url/repl.enter(content)"
-  err, res, body <- req "#fpx-url/document.querySelector('html').outerHTML"
+  err, res, body <- req "#fpx-url/content.document.querySelector('html').outerHTML"
   t.equal res?statusCode, HttpSt.OK
   expect = BOOP-HTML.replace '<html>', '<html><head></head>' # firefox adds head section
   assert body, expect

@@ -9,13 +9,13 @@ url from a remote Firefox into [my javascript web application][wdts]
 but was unable to workaround browser security restrictions or get
 [Firefox WebDriver][WebDriver] to work reliably.
 
-## Install and run
+## install and run
 
     $ npm install fireprox
     $ cd node_modules/fireprox
     $ node fireprox
 
-## Options
+## options
 
     $ node fireprox --help
     Usage: fireprox [options]
@@ -28,14 +28,14 @@ but was unable to workaround browser security restrictions or get
       --mozrepl-host [host]  mozrepl hostname or ip-address (default:localhost)
       --mozrepl-port [port]  mozrepl port (default:4242)
 
-## Usage
+## usage
 
 Navigate to `http://server:8080` where `server` is
 the node.js server running fireprox. You should see `Fireprox says hello!`.
 
 Now navigate to `http://server:8080/COMMAND` where `COMMAND` is any MozRepl command.
 
-## Examples
+## examples
 
 To get the firefox current url browse to `http://server:8080/content.location.href`
 
@@ -45,7 +45,7 @@ To navigate firefox to `http://bar` browse to `http://server:8080/content.locati
 To show `foo` in an alert box browse to `http://server:8080/alert('foo')`
 (you'll need to manually close this alert before fireprox returns).
 
-## Build and run locally
+## build and run locally
 
     $ git clone git@github.com:dizzib/fireprox.git
 
@@ -58,11 +58,11 @@ To run your newly built fireprox:
 
     $ node dist/site/server
 
-## Credits
+## credits
 
 Inspired by [codediesel].
 
-## License
+## license
 
 MIT
 

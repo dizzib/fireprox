@@ -11,7 +11,7 @@ log = console.log
 const MOZREPL-HOST      = \localhost
 const MOZREPL-PORT      = 4242
 const MOZREPL-PROMPT    = 'repl>'
-const MOZREPL-PROMPT-RX = new RegExp "#MOZREPL-PROMPT $"
+const MOZREPL-PROMPT-RX = new RegExp "\n#MOZREPL-PROMPT $"
 const PORT              = 8080
 
 Args
@@ -55,14 +55,13 @@ net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
     function send-and-reply
       <- _.delay _, 250ms # mozrepl sometimes gives 'Host context unloading!' without this (yay!)
       client.on(\data, responder).write cmd
-      buffer = []
+      buffer = ''
       function responder # add packets to buffer til we see the prompt
-        log it.toString!
-        buffer.push it
-        return unless MOZREPL-PROMPT-RX.test it
+        buffer += it.toString!
+        return unless MOZREPL-PROMPT-RX.test buffer
         client.removeListener \data, responder
-        res.send (buffer.toString!replace MOZREPL-PROMPT, '').trim!
-        buffer := []
+        res.send buffer.replace(MOZREPL-PROMPT-RX, '').trim!
+        buffer := ''
 
     function skip-welcome
       log it.toString!

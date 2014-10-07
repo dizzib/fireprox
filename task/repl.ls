@@ -24,7 +24,7 @@ const COMMANDS =
   * cmd:'h   ' level:0 desc:'help  - show this help'        fn:show-help
   * cmd:'b.fc' level:0 desc:'build - files compile'         fn:Build.compile-files
   * cmd:'b.nr' level:0 desc:'build - npm refresh'           fn:Build.refresh-modules
-  * cmd:'t   ' level:0 desc:'test  - run'                   fn:Test.run
+  * cmd:'    ' level:0 desc:'test  - run'                   fn:Test.run
   * cmd:'d.lo' level:1 desc:'dist  - publish to local'      fn:Dist.publish-local
   * cmd:'d.PU' level:2 desc:'dist  - publish to public npm' fn:Dist.publish-public
 
@@ -35,12 +35,10 @@ for c in commands then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "fireprox >"
   ..on \line, (cmd) -> WFib ->
-    switch cmd
-    | '' =>
-      rl.prompt!
-    | _  =>
-      for c in commands when cmd is c.cmd.trim! then try-fn c.fn
-      rl.prompt!
+    for c in commands when cmd is c.cmd.trim!
+      try c.fn!
+      catch e then log e
+    rl.prompt!
 
 Build.start!
 Build.on \built, ->
@@ -53,7 +51,3 @@ setTimeout show-help, 1000ms
 function show-help
   for c in commands then log c.display
   rl.prompt!
-
-function try-fn
-  try it!
-  catch e then log e

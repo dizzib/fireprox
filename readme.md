@@ -16,7 +16,7 @@ but was unable to workaround browser security restrictions or get
 
 ## options
 
-    $ node fireprox --help
+    $ fireprox --help
     Usage: fireprox [options]
 
     Options:

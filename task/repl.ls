@@ -22,7 +22,7 @@ config.silent = true # otherwise too much noise
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'h   ' level:0 desc:'help  - show this help'        fn:show-help
-  * cmd:'b.fc' level:0 desc:'build - files compile'         fn:Build.compile-files
+  * cmd:'b.c ' level:0 desc:'build - compile'               fn:Build.compile
   * cmd:'b.nr' level:0 desc:'build - npm refresh'           fn:Build.refresh-modules
   * cmd:'    ' level:0 desc:'test  - run'                   fn:Test.run
   * cmd:'d.lo' level:1 desc:'dist  - publish to local'      fn:Dist.publish-local

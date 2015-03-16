@@ -30,7 +30,7 @@ tasks  =
     oxt : \html
 
 module.exports = me = (new Emitter!) with
-  compile-files: ->
+  compile: ->
     try
       for tid of tasks then compile-batch tid
       me.emit \built

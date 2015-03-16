@@ -1,9 +1,10 @@
 name       : \fireprox
+version    : \1.1.0
 description: "A simple proxy for MozRepl over HTTP GET using express/node.js to control Firefox"
-version    : \1.0.4
-author     : \dizzib
-license:   : \MIT
 keywords   : <[ control firefox get http mozrepl node nodejs proxy remote ]>
+license:   : \MIT
+author     : \dizzib
+bin        : \./bin/fireprox
 repository :
   type: \git
   url : \https://github.com/dizzib/fireprox

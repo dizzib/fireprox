@@ -6,6 +6,7 @@ Dir    = require \./constants .dir
 
 module.exports =
   prepare: ->
+    cp \-rf, "#{Dir.SITE}/bin/*", "#{Dir.build.SITE}/bin"
     cp \-f, "#{Dir.BUILD}/package.json", Dir.build.SITE
     cp \-f, "#{Dir.ROOT}/readme.md", Dir.build.SITE
 

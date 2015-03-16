@@ -11,9 +11,8 @@ but was unable to workaround browser security restrictions or get
 
 ## install and run
 
-    $ npm install fireprox
-    $ cd node_modules/fireprox
-    $ node fireprox
+    $ npm install -g fireprox     # might need to prefix with sudo
+    $ fireprox
 
 ## options
 

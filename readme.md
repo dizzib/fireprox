@@ -22,11 +22,11 @@ but was unable to workaround browser security restrictions or get
 
     Options:
 
-      -h, --help             output usage information
-      -V, --version          output the version number
-      -p, --port [port]      fireprox listening port (default:8080)
-      --mozrepl-host [host]  mozrepl hostname or ip-address (default:localhost)
-      --mozrepl-port [port]  mozrepl port (default:4242)
+      -h, --help                 output usage information
+      -V, --version              output the version number
+      -p, --port [port]          fireprox listening port (default:8080)
+      -m, --mozrepl-host [host]  mozrepl hostname or ip-address (default:localhost)
+      -q, --mozrepl-port [port]  mozrepl port (default:4242)
 
 ## usage
 

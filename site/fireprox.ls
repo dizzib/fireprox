@@ -17,8 +17,8 @@ const PORT              = 8080
 Args
   .version P-Json.version
   .option '-p, --port [port]', "fireprox listening port (default:#PORT)", PORT
-  .option '--mozrepl-host [host]', "mozrepl hostname or ip-address (default:#MOZREPL-HOST)", MOZREPL-HOST
-  .option '--mozrepl-port [port]', "mozrepl port (default:#MOZREPL-PORT)", MOZREPL-PORT
+  .option '-m, --mozrepl-host [host]', "mozrepl hostname or ip-address (default:#MOZREPL-HOST)", MOZREPL-HOST
+  .option '-q, --mozrepl-port [port]', "mozrepl port (default:#MOZREPL-PORT)", MOZREPL-PORT
   .parse process.argv
 
 function allow-cross-domain req, res, next # http://backbonetutorials.com/cross-domain-sessions/

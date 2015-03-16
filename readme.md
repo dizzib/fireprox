@@ -46,14 +46,14 @@ To show `foo` in an alert box browse to `http://server:8080/alert('foo')`
 
 ## build and run locally
 
-    $ git clone git@github.com:dizzib/fireprox.git
-
     $ npm install -g livescript   # ensure livescript is installed globally
+    $ git clone git@github.com:dizzib/fireprox.git
+    $ cd fireprox
     $ ./task/bootstrap            # compile the task runner and install dependencies
     $ node _build/task/repl       # launch the task runner
     fireprox > b.c                # build compile
 
-    $ node _build/site/fireprox   # run it!
+    $ ./_build/site/bin/fireprox  # run it!
 
 ## credits
 

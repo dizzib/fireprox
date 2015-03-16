@@ -15,7 +15,7 @@ Args
   .option '--reggie-server-port [port]', 'reggie-server listening port for local publish'
   .parse process.argv
 
-cd Dir.DIST # for safety, set working directory to /dist
+cd Dir.BUILD # for safety, set working directory to BUILD
 config.fatal  = true # shelljs doesn't raise exceptions so kill this process on error
 config.silent = true # otherwise too much noise
 

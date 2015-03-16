@@ -23,7 +23,7 @@ module.exports =
 
 function run-fireprox cb
   function log-fpx then log Chalk.yellow it.toString!
-  pushd Dir.dist.SITE
+  pushd Dir.build.SITE
   try
     opts = [ \fireprox \--port FIREPROX-PORT ]
     fpx = Cp.spawn \node, opts
@@ -35,7 +35,7 @@ function run-fireprox cb
     popd!
 
 function run-tests cb
-  pushd Dir.dist.TEST
+  pushd Dir.build.TEST
   try
     Cp.spawn \node, [ \fireprox \--port FIREPROX-PORT ]
       ..on \close, cb

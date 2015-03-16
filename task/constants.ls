@@ -3,15 +3,15 @@ Shell  = require \shelljs/global
 
 const ROOT = pwd!
 const DIRNAME =
-  DIST: \dist
-  SITE: \site
-  TASK: \task
-  TEST: \test
+  BUILD: \_build
+  SITE : \site
+  TASK : \task
+  TEST : \test
 const DIR =
-  DIST: "#ROOT/#{DIRNAME.DIST}"
-  dist:
-    SITE: "#ROOT/#{DIRNAME.DIST}/#{DIRNAME.SITE}"
-    TEST: "#ROOT/#{DIRNAME.DIST}/#{DIRNAME.TEST}"
+  BUILD: "#ROOT/#{DIRNAME.BUILD}"
+  build:
+    SITE: "#ROOT/#{DIRNAME.BUILD}/#{DIRNAME.SITE}"
+    TEST: "#ROOT/#{DIRNAME.BUILD}/#{DIRNAME.TEST}"
   ROOT: "#ROOT"
   SITE: "#ROOT/#{DIRNAME.SITE}"
   TASK: "#ROOT/#{DIRNAME.TASK}"

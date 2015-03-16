@@ -37,7 +37,7 @@ module.exports = me = (new Emitter!) with
     catch e then G.err e
 
   refresh-modules: ->
-    Assert.equal pwd!, Dir.DIST
+    Assert.equal pwd!, Dir.BUILD
     W4 exec, 'npm -v', silent:false
     W4 exec, 'npm prune', silent:false
     W4 exec, 'npm install', silent:false
@@ -93,8 +93,8 @@ function markdown ipath, opath, cb
   cb e
 
 function prune-empty-dirs
-  unless pwd! is Dir.DIST then return log 'bypass prune-empty-dirs'
-  Assert.equal pwd!, Dir.DIST
+  unless pwd! is Dir.BUILD then return log 'bypass prune-empty-dirs'
+  Assert.equal pwd!, Dir.BUILD
   code, out <- exec "find . -type d -empty -delete"
   G.err "prune failed: #code #out" if code
 

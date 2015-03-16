@@ -67,6 +67,7 @@ net-cfg = host:Args.mozrepl-host, port:Args.mozrepl-port
       log it.toString!
       return unless MOZREPL-PROMPT-RX.test it
       client.removeListener \data, skip-welcome
+      <- _.delay _, 250ms # allow mozrepl to settle
       send-and-reply!
 
 log "Creating fireprox listening on port #{Args.port}"

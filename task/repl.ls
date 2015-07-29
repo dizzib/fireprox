@@ -12,7 +12,7 @@ Dist  = require \./distribute
 Test  = require \./test
 
 Args
-  .option '--reggie-server-port [port]', 'reggie-server listening port for local publish'
+  .option '--npm-local [dir]' 'local publish directory'
   .parse process.argv
 
 cd Dir.BUILD # for safety, set working directory to BUILD
@@ -25,17 +25,15 @@ const COMMANDS =
   * cmd:'b.c ' level:0 desc:'build - compile'               fn:Build.compile
   * cmd:'b.nr' level:0 desc:'build - npm refresh'           fn:Build.refresh-modules
   * cmd:'    ' level:0 desc:'test  - run'                   fn:Test.run
-  * cmd:'d.lo' level:1 desc:'dist  - publish to local'      fn:Dist.publish-local
+  * cmd:'d.lo' level:1 desc:'dist  - publish to local dir'  fn:Dist.publish-local
   * cmd:'d.PU' level:2 desc:'dist  - publish to public npm' fn:Dist.publish-public
 
-max-level = if Args.reggie-server-port then 2 else 0
-commands = _.filter COMMANDS, -> it.level <= max-level
-for c in commands then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
+for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "fireprox >"
   ..on \line, (cmd) -> WFib ->
-    for c in commands when cmd is c.cmd.trim!
+    for c in COMMANDS when cmd is c.cmd.trim!
       try c.fn!
       catch e then log e
     rl.prompt!
@@ -49,5 +47,5 @@ setTimeout show-help, 1000ms
 # helpers
 
 function show-help
-  for c in commands then log c.display
+  for c in COMMANDS then log c.display
   rl.prompt!

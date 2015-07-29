@@ -1,4 +1,4 @@
-## fireprox
+# fireprox
 
 A simple proxy for [MozRepl] over HTTP-GET using [express]/[node.js] to control Firefox:
 

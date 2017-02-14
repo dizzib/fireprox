@@ -5,7 +5,6 @@ Fs      = require \fs
 Gaze    = require \gaze
 Globule = require \globule
 _       = require \lodash
-Md      = require \marked
 Path    = require \path
 Shell   = require \shelljs/global
 WFib    = require \wait.for .launchFiber
@@ -24,10 +23,6 @@ tasks  =
     ixt : \ls
     oxt : \js
     xsub: 'json.js->json'
-  markdown:
-    cmd : markdown
-    ixt : \md
-    oxt : \html
 
 module.exports = me = (new Emitter!) with
   compile: ->

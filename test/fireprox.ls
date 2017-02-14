@@ -54,7 +54,8 @@ T 'start firefox and ensure MozRepl is listening', (t) ->
     ..stderr.on \data, log-firefox
     ..stdout.on \data, ->
       log-firefox it
-      t.end! if /MOZREPL : Listening/.test it
+      _.delay t.end, 500ms if /MOZREPL : Listening/.test it
+      # the subsequent test tends to fail unless this small delay is introduced
 
 T 'navigate firefox to BOOP', (t) ->
   function assert actual, expect then t.equal actual, "\"#expect\"" # mozrepl adds quotes

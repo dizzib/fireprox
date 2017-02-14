@@ -18,9 +18,8 @@ dependencies:
   lodash       : \2.4.1
 devDependencies:
   chalk     : \~0.4.0
+  chokidar  : \~1.6.0
   cron      : \~1.0.3
-  gaze      : \~0.6.4
-  globule   : \~0.2.0 # TODO: remove when gaze fixes issue 104
   growly    : \~1.3.0
   livescript: \~1.5.0
   request   : \~2.44.0

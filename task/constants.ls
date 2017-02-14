@@ -20,5 +20,6 @@ const DIR =
 for dir in DIR then Assert test \-e dir
 
 module.exports =
+  APPNAME: \fireprox
   dirname: DIRNAME
   dir    : DIR

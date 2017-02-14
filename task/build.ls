@@ -11,16 +11,16 @@ Shell   = require \shelljs/global
 WFib    = require \wait.for .launchFiber
 W4      = require \wait.for .for
 W4m     = require \wait.for .forMethod
-Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
+Dirname = require \./constants .dirname
 G       = require \./growl
 
 const NMODULES = './node_modules'
 
-pruner = new Cron.CronJob cronTime:'*/10 * * * *', onTick:prune-empty-dirs
+pruner = new Cron.CronJob cronTime:'*/10 * * * *' onTick:prune-empty-dirs
 tasks  =
   livescript:
-    cmd : "#NMODULES/LiveScript/bin/lsc --output $OUT $IN"
+    cmd : "#NMODULES/livescript/bin/lsc --output $OUT $IN"
     ixt : \ls
     oxt : \js
     xsub: 'json.js->json'

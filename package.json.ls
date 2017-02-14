@@ -22,7 +22,7 @@ devDependencies:
   gaze      : \~0.6.4
   globule   : \~0.2.0 # TODO: remove when gaze fixes issue 104
   growly    : \~1.3.0
-  LiveScript: \~1.2.0
+  livescript: \~1.5.0
   marked    : \~0.3.1
   request   : \~2.44.0
   shelljs   : \~0.2.6
